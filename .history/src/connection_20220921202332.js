@@ -9,6 +9,7 @@ module.exports = () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             dbName: 'sample_airbnb',
+            collection: 'listingsAndReviews'
         },
         err => {
             if(err){

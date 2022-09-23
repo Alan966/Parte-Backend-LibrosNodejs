@@ -25,7 +25,7 @@ router.post('/create', (req, res) => {
             res.status(500).send('Error with create header')
         }else{
             res.status(200).send('Create header with success')
-            res.redirect('/header/all')
+            // res.redirect('/header/all')
             }
 
     })
@@ -39,7 +39,6 @@ router.post('/update/:id', (req, res) => {
                 res.status(500).send('Error with update header')
             }else{
                 console.log('Usuario actualizado con exito')
-                res.send(result)
             }
          })
 } )

@@ -8,9 +8,11 @@ module.exports = () => {
             keepAlive: true,
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            dbName: 'sample_airbnb',
         },
         err => {
+            const name = "sample_airbnb"
+            const dbName = mongoose.connection.name
+            const collectionDb = mongoose.connection.db.collection('listingsAndReviews')
             if(err){
                 console.log('Existe un error al conectarnos a la base de datos')
             }else{

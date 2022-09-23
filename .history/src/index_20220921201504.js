@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const shortDb = require('./routes/ShortDb')
+const listingsAndReviews = require('./routes/listingsAndReviews')
 const connect = require('./connection')
 
 // const isAdmin  = require('./middlewares/isAdmin')
@@ -22,7 +22,7 @@ app.get('/dashboard', (req, res) => {
     res.send('You are an admin');
   });
 
-app.use('/shortDb', shortDb)
+app.use('/listingsAndReviews', listingsAndReviews)
 
 
 

@@ -1,17 +1,17 @@
 const express = require('express')
 const app = express()
-const shortDb = require('./routes/ShortDb')
-const connect = require('./connection')
-
 // const isAdmin  = require('./middlewares/isAdmin')
+const connect = require('./connection')
+const header = require('./routes/header')
 
 app.set('port', 8080)
 app.set('title', 'My aplicacion esta ')
 app.set('corriendo', 'corriendo')
 
-// Para poder utilzar  json
+// Para poder utilzar amazon
 app.use(express.json())
 connect()
+
 
 
 // Se agrega el middleware en la aplicación.
@@ -22,8 +22,7 @@ app.get('/dashboard', (req, res) => {
     res.send('You are an admin');
   });
 
-app.use('/shortDb', shortDb)
-
+app.use('/listingsAndReviews', header)
 
 
 app.listen(app.get('port'), () => {
