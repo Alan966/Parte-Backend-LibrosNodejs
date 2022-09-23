@@ -8,7 +8,6 @@ module.exports = () => {
             keepAlive: true,
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            dbName: 'sample_airbnb',
         },
         err => {
             if(err){

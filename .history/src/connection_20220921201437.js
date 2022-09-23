@@ -8,15 +8,11 @@ module.exports = () => {
             keepAlive: true,
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            dbName: 'sample_airbnb',
-        },
-        err => {
-            if(err){
-                console.log('Existe un error al conectarnos a la base de datos')
-            }else{
-                console.log('Hubo una coneccion exitosa a la base de datos')
-            }
         })
+        .then(client => {
+            const collection = client.db("test").collection("devices");
+        })
+        .catch(err => console.log(err))
     }
 
     connect()
