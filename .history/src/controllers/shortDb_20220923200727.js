@@ -2,12 +2,7 @@ const  shortDb = require('../models/shortDb')
 
 
 const getAllListings = (req, res) => {
-    shortDb.find({}, (err, result) => {
-        if(err)res.json(['There is an error in the request' + err])
-
-        res.json(result)
-    })
-
+    res.send('You are an admin');
 }
 
 const createListing = (req, res) => {

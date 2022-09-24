@@ -21,10 +21,10 @@ app.get('/dashboard', (req, res) => {
     res.send('You are an admin');
 });
 
-app.use('/shortDb', require('../src/routes/ShortDb.routes'))
+app.use('/shortDb', require('./routes/ShortDb.routes'))
+
+
 
 app.listen(app.get('port'), () => {
     console.log(`${app.get('title')} ${app.get('corriendo')} en el puerto ${app.get('port')}`)
 })
-
-module.exports = app
