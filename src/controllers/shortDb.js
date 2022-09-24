@@ -3,13 +3,11 @@ const  shortDb = require('../models/shortDb')
 
 const getAllListings = (req, res) => {
     shortDb.find({}, (err, result) => {
-        if(err){
-            res.send('There is an error in the request' + err)
-        }else{
-            console.log(result)
-            res.send(result)
-        }
+        if(err)res.json(['There is an error in the request' + err])
+
+        res.json(result)
     })
+
 }
 
 const createListing = (req, res) => {
