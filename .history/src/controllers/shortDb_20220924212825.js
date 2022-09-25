@@ -53,14 +53,14 @@ const createListing = (req, res) => {
         reviews: data.reviews
     })
 
-    newListing.save((err, result) => {
-        if(err){
-            res.send('There is an error in the request' + err)
-        }else{
-            console.log('Save an Listing')
-            res.send(result)
-        }
-    })
+    // newListing.save((err, result) => {
+    //     if(err){
+    //         res.send('There is an error in the request' + err)
+    //     }else{
+    //         console.log('Save an Listing')
+    //         res.send(result)
+    //     }
+    // })
 }
 
 const updateListing= (req, res) => {

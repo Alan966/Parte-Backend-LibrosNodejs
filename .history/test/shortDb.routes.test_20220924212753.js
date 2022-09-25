@@ -82,18 +82,11 @@ describe('GET /shortDb/create', () => {
         }
         let response;
         beforeEach(async() => {
-            response = await (await request(app).post('/shortDb/create')).send(data);
+            response = await (await request(app).post('/shortDb/create')).send(newListing);
         })
 
         test('should response with a 200 status code', async () => {
             expect(response.statusCode).toBe(200);
-        })
-
-        test('should have a content-type application/json in header', async () => {
-            expect(response.header['content-type']).toEqual(
-                expect.stringContaining('application/json')
-            )
-
         })
 
     })

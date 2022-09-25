@@ -11,7 +11,6 @@ const getAllListings = (req, res) => {
 const createListing = (req, res) => {
     const data = req.body;
     const newListing = new shortDb({
-        _id: body._id,
         name: data._id,
         listing_url: data.listing_url,
         name: data.name,

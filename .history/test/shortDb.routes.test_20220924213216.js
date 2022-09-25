@@ -93,7 +93,6 @@ describe('GET /shortDb/create', () => {
             expect(response.header['content-type']).toEqual(
                 expect.stringContaining('application/json')
             )
-
         })
 
     })

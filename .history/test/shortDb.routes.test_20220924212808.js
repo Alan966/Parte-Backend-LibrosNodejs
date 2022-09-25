@@ -89,12 +89,5 @@ describe('GET /shortDb/create', () => {
             expect(response.statusCode).toBe(200);
         })
 
-        test('should have a content-type application/json in header', async () => {
-            expect(response.header['content-type']).toEqual(
-                expect.stringContaining('application/json')
-            )
-
-        })
-
     })
 })

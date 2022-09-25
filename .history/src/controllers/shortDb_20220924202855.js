@@ -2,16 +2,16 @@ const  shortDb = require('../models/shortDb')
 
 
 const getAllListings = (req, res) => {
-    shortDb.find({}, (err, result) => {
-        if(err)res.json(['There is an error in the request' + err])
-        res.json(result)
-    })
+    // shortDb.find({}, (err, result) => {
+    //     if(err)res.json(['There is an error in the request' + err])
+    //     res.json(result)
+    // })
+    res.json([{"nosebro":"nosebro"}])
 }
 
 const createListing = (req, res) => {
     const data = req.body;
     const newListing = new shortDb({
-        _id: body._id,
         name: data._id,
         listing_url: data.listing_url,
         name: data.name,
