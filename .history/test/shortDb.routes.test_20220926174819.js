@@ -81,67 +81,21 @@ describe('POST /shortDb/create', () => {
             review_scores:[{"_id": "58663741", "date":"2016-01-03T05:00:00.000+00:00", "listing_id":"10006546", "reviewer_id":"51483096", "reviewer_name":"Cátia"}, {"_id": "62413197", "date": "2016-02-14T05:00:00.000+00:00", "listing_id":"10006546" }, {"_id": "68310569", "date":"2016-04-04T04:00:00.000+00:00", "listing_id":"10006546", "reviewer_id":"53859850", "reviewer_name":"Bart"}, {"_id": "69693942", "date":"2016-04-12T04:00:00.000+00:00", "listing_id":"10006546", "reviewer_id": "3135623", "reviewer_name":"Alex"}, {"_id": "71451096", "date":"2016-04-25T04:00:00.000+00:00", "listing_id":"10006546", "reviewer_id":"13187858", "reviewer_name":"Dan"}, {"_id":"73191268", "date":"2016-05-07T04:00:00.000+00:00", "listing_id":"10006546", "reviewer_id":"61434690", "reviewer_name":"Anne", "comments":"THE PLACE TO BE, l'appartement est situé au milieu de la Ribeira , tout peut se faire à pieds c'est l'ideal,l'appartement est très bien agencé et équipé"}]
         }
 
-        const wrongData = {
-            nombre:"queOvo",
-            summary:"Algo Rico",
-        }
-        afterEach(async () => {
-            await shortDb.deleteMany({name:"queOvole"});
-        })
-
-        let response;
-        beforeEach(async () => {
-            response = await request(app).post('/shortDb/create').send(data);
-        })
-        test('should response with a 200 status code', async () => {
-            expect(response.statusCode).toBe(201);
-        })
-
-        test('should have a content-type application/json in header', async () => {
-            expect(response.headers['content-type'])
-                .toEqual(expect.stringContaining('json'));
-        })
-
-        test('should response with a new Object',async () => {
-            expect(response.body._id).toBeDefined();
-            expect(response.body.name).toBe(data.name);
-        } )
-
-        test('Error en la insercion', async () => {
-            const response = await request(app).post('/shortDb/create').send(wrongData);
-            expect(response.statusCode).toBe(500);
-            expect(response.body.error).toBeDefined();
-        })
-    })
-})
-
-describe('PUT /shortDb/update/:id', () => {
-
-    beforeAll(async () => {
-        await mongoose.connect(mongodb.url);
-    })
-
-    afterAll(async () => {
-        await mongoose.disconnect();
-    })
-
-    let shortOne;
-    beforeEach(async() => {
-        shortOne = await shortDb.create({
-            listing_url:"https://cdn-images.farfetch-contents.com/15/45/41/10/15454110_28385859_1000.jpg",
-            name:"queOvole",
-            summary:"Algo Rico",
-            space:"There is the most expensive",
-            description:"I don't saw what push",
-            neighborhood_overview:"tenis si the first or the second night",
-            notes:"metele",
-            transit:"mete duro metele durof",
-            access:"you don't need don't need there , there is debitf card bro",
-            interaction:"Nostros with necesditamos nada",
-            house_rules:"wich is fall most dexpensive car",
-            property_type:"Shaving the roles",
-            room_type:"United states",
-            bed_type:"enproitment",
+        const dataTwo = {
+            listing_url:"https://cdn-images.farfetch-contents.com/14/23/81/28/14238128_20215419_1000.jpg",
+            name:"bebe",
+            summary:"esta noche que vas a hacer",
+            space:"Te necesito ver",
+            description:"Salgo todo los dias por la calle",
+            neighborhood_overview:"te mando musica",
+            notes:"pero la miro y me acuerdo",
+            transit:"yo todo intentos",
+            access:"preguntando por boss",
+            interaction:"Otra noche mas que no contestas",
+            house_rules:"Chica por que tu",
+            property_type:"te estoy tirando",
+            room_type:"States",
+            bed_type:"a ti te gusta",
             minimum_nights:"4",
             maximum_nights:"4",
             cancellation_policy:"bro you need more inversting",
@@ -165,29 +119,28 @@ describe('PUT /shortDb/update/:id', () => {
             address:{"street":"Porto, Porto, Portugal", "suburb":"", "government_area":"Cedofeita, Ildefonso, Sé, Miragaia, Nicolau, Vitória", "market":"Porto", "country":"Portugal", "country_code":"PT"},
             availability:{"availability_30":"28", "availability_60":"47", "availability_90": "74", "availability_365": "239"},
             review_scores:[{"_id": "58663741", "date":"2016-01-03T05:00:00.000+00:00", "listing_id":"10006546", "reviewer_id":"51483096", "reviewer_name":"Cátia"}, {"_id": "62413197", "date": "2016-02-14T05:00:00.000+00:00", "listing_id":"10006546" }, {"_id": "68310569", "date":"2016-04-04T04:00:00.000+00:00", "listing_id":"10006546", "reviewer_id":"53859850", "reviewer_name":"Bart"}, {"_id": "69693942", "date":"2016-04-12T04:00:00.000+00:00", "listing_id":"10006546", "reviewer_id": "3135623", "reviewer_name":"Alex"}, {"_id": "71451096", "date":"2016-04-25T04:00:00.000+00:00", "listing_id":"10006546", "reviewer_id":"13187858", "reviewer_name":"Dan"}, {"_id":"73191268", "date":"2016-05-07T04:00:00.000+00:00", "listing_id":"10006546", "reviewer_id":"61434690", "reviewer_name":"Anne", "comments":"THE PLACE TO BE, l'appartement est situé au milieu de la Ribeira , tout peut se faire à pieds c'est l'ideal,l'appartement est très bien agencé et équipé"}]
-        });
+        }
+        afterAll(async () => {
+            await shortDb.deleteMany({name:"queOvole"});
+            await shortDb.deleteMany({name:"bebe"});
+        })
+        test('should response with a 200 status code', async () => {
+            const  response = await request(app).post('/shortDb/create').send(data);
+            expect(response.statusCode).toBe(201);
+        })
+
+        test('should have a content-type application/json in header', async () => {
+            const  response = await request(app).post('/shortDb/create').send(data);
+            console.log(response.body)
+            expect(response.headers['content-type'])
+                .toEqual(expect.stringContaining('json'));
+        })
+
+        test('should response with a new Object',async () => {
+            const  response = await request(app).post('/shortDb/create').send(dataTwo);
+            console.log(response.body);
+            expect(response.body._id).toBeDefined();
+            expect(response.body.name).toBe(dataTwo.name);
+        } )
     })
-
-    afterEach(async() => {
-        await shortDb.findByIdAndDelete( shortOne._id, (err, doc) => {
-            if(err) console.log(err);
-        }).clone().catch(function(err){ console.log(err)});
-    })
-
-    test('Should response with a 200 statusCode', async () => {
-        const response = await request(app).put(`/shortDb/update/${shortOne._id}`).send({
-            name:"Usame por favor"
-        });
-        expect(response.statusCode).toBe(200);
-        expect(response.headers['content-type']).toContain('json');
-    });
-
-    test('Se actualiza correctamente', async () => {
-        const response = await request(app).put(`/shortDb/update/${shortOne._id}`).send({
-            name:"Usame por favor"
-        });
-
-        expect(response.body._id).toBeDefined();
-        expect(response.body.name).toBe('Usame por favor');
-    })
-});
+})

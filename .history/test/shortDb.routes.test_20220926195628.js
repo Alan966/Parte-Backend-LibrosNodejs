@@ -178,16 +178,7 @@ describe('PUT /shortDb/update/:id', () => {
         const response = await request(app).put(`/shortDb/update/${shortOne._id}`).send({
             name:"Usame por favor"
         });
-        expect(response.statusCode).toBe(200);
+        expect(response.statusCode).toBe(204);
         expect(response.headers['content-type']).toContain('json');
     });
-
-    test('Se actualiza correctamente', async () => {
-        const response = await request(app).put(`/shortDb/update/${shortOne._id}`).send({
-            name:"Usame por favor"
-        });
-
-        expect(response.body._id).toBeDefined();
-        expect(response.body.name).toBe('Usame por favor');
-    })
 });

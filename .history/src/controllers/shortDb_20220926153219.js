@@ -53,9 +53,7 @@ const createListing = (req, res) => {
 
     newListing.save((err, result) => {
         if(err){
-            res.status(500).json({
-                error: 'There is an error in the request' + err
-            })
+            res.status(500).json('There is an error in the request' + err)
         }else{
             console.log('Save an Listing')
             res.status(201).json(result)
@@ -64,21 +62,16 @@ const createListing = (req, res) => {
 }
 
 const updateListing= (req, res) => {
-    const key = req.params.id
+    const params = req.params.id
     const data = req.body
-    shortDb.findByIdAndUpdate(key,
-        data,
-        {new: true},
-        (err, result) => {
-            if(err){
-                res.json({
-                    error: 'There is an error in the request' + err
-                })
-            }else{
-                res.json(result)
-            }
+    shortDb.findOneAndUpdate({_id: params}, data, (err, result) => {
+        if(err){
+            res.send('There is an error in the request' + err)
+        }else{
+            console.log(result)
+            res.send(result)
         }
-        ).clone()
+    })
 }
 
 const deleteListing  = (req, res) => {

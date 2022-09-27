@@ -7,72 +7,84 @@ const shortDbSchema = new Schema({
         trim:true,
         maxlength:3000,
         require:true,
+        unique:true
     },
     name:{
         type: String,
         trim: true,
         maxLength:100,
         require:true,
+        unique:true
     },
     summary:{
         type: String,
         trim: true,
         maxLength:1000,
         require:true,
+        unique:true
     },
     space:{
         type: String,
         trim: true,
         maxLength:1000,
         require: true,
+        unique:true
     },
     description:{
         type: String,
         trim: true,
         maxLength: 1000,
         require: true,
+        unique:true
     },
     neighborhood_overview:{
         type: String,
         trim: true,
         maxLength: 1000,
         require: true,
+        unique:true
     },
     notes:{
         type: String,
         trim: true,
         maxLength: 1000,
         require: true,
+        unique: true
     },
     transit:{
         type: String,
         trim: true,
         maxLength: 1000,
         require: true,
+        unique: true
     },
     access:{
         type: String,
         trim: true,
         maxLength:1000,
         require: true,
+        unique:true
     },
     interaction:{
         type: String,
         trim: true,
         maxLength: 1000,
         require: true,
+        unique: true
     },
     house_rules:{
         type: String,
         trim: true,
         maxLength: 1000,
         require: true,
+        unique: true
     },
     property_type:{
         type: String,
         trim: true,
         maxLength:20,
         require:true,
+        unique:true
     },
     room_type:{
         type: String,
