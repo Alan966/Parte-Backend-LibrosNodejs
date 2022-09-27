@@ -65,20 +65,14 @@ const createListing = (req, res) => {
 
 const updateListing= (req, res) => {
     const key = req.params.id
-    const data = req.body
-    shortDb.findByIdAndUpdate(key,
-        data,
-        {new: true},
-        (err, result) => {
-            if(err){
-                res.json({
-                    error: 'There is an error in the request' + err
-                })
-            }else{
-                res.json(result)
-            }
+    shortDb.findOneAndUpdate({_id: key}, (err, result ) => {
+        if(err){
+            res.status(204).json('There is an error in the request' + err)
+        }else{
+            console.log('Update an Listing')
+            res.status(204).send(result)
         }
-        ).clone()
+    })
 }
 
 const deleteListing  = (req, res) => {

@@ -6,7 +6,7 @@ require('dotenv').config()
 const shortDb = require("../src/models/shortDb");
 
 const password = process.env.PASSWORD
-jest.setTimeout(30000)
+jest.setTimeout(50000)
 
 describe('GET /shortDb/all', () => {
     beforeAll(async () => {
@@ -169,25 +169,16 @@ describe('PUT /shortDb/update/:id', () => {
     })
 
     afterEach(async() => {
-        await shortDb.findByIdAndDelete( shortOne._id, (err, doc) => {
+        await shortDb.findOneAndDelete({_id: shortOne._id}, (err,doc) => {
             if(err) console.log(err);
-        }).clone().catch(function(err){ console.log(err)});
+        });
     })
 
     test('Should response with a 200 statusCode', async () => {
         const response = await request(app).put(`/shortDb/update/${shortOne._id}`).send({
             name:"Usame por favor"
         });
-        expect(response.statusCode).toBe(200);
-        expect(response.headers['content-type']).toContain('json');
+        expect(response.statusCode).toBe(204);
+        expect(response.headers['content-type']).toContain('json')
     });
-
-    test('Se actualiza correctamente', async () => {
-        const response = await request(app).put(`/shortDb/update/${shortOne._id}`).send({
-            name:"Usame por favor"
-        });
-
-        expect(response.body._id).toBeDefined();
-        expect(response.body.name).toBe('Usame por favor');
-    })
 });

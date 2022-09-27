@@ -188,6 +188,6 @@ describe('PUT /shortDb/update/:id', () => {
         });
 
         expect(response.body._id).toBeDefined();
-        expect(response.body.name).toBe('Usame por favor');
+        expect(response.body.name).toBe('trip updated');
     })
 });
