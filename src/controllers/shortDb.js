@@ -81,16 +81,13 @@ const updateListing= (req, res) => {
         ).clone()
 }
 
-const deleteListing  = (req, res) => {
-    const key = req.params.id
-    shortDb.deleteOne({_id: key}, (err, result) => {
-        if(err){
-            res.send('There is an error in the request' + err)
-        }else{
-            console.log('Delete an Listing')
-            res.send(result)
-        }
-    })
+const deleteListing  = async (req, res) => {
+try {
+    const room = await shortDb.findByIdAndDelete(req.params.id);
+    res.json(room);
+} catch (error) {
+    res.status(500).json({error : 'Ha ocurrido un error'})
+}
 }
 
 
