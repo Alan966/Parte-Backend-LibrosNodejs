@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const connect = require('./connection')
-
+const logger = require('morgan')
 // const isAdmin  = require('./middlewares/isAdmin')
 
 app.set('port', 5050)
@@ -12,6 +12,8 @@ app.set('corriendo', 'corriendo')
 app.use(express.json())
 connect()
 
+//Middlewares
+app.use(logger('dev'))
 
 // Se agrega el middleware en la aplicación.
 //   app.use(isAdmin);
@@ -22,6 +24,7 @@ app.get('/dashboard', (req, res) => {
 });
 
 app.use('/shortDb', require('../src/routes/ShortDb.routes'))
+app.use('/headers', require('../src/routes/Headers.routes'))
 
 app.listen(app.get('port'), () => {
     console.log(`${app.get('title')} ${app.get('corriendo')} en el puerto ${app.get('port')}`)

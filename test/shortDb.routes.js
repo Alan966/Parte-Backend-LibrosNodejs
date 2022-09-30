@@ -2,10 +2,8 @@ const app = require("../src/index");
 const mongoose = require("mongoose");
 const request = require("supertest");
 const { mongodb } = require("../src/config");
-require('dotenv').config()
 const shortDb = require("../src/models/shortDb");
 
-const password = process.env.PASSWORD
 jest.setTimeout(30000)
 
 describe('GET /shortDb/all', () => {
