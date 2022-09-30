@@ -3,10 +3,11 @@ const Schema = mongoose.Schema
 
 const heanderSchema = new Schema({
     name:{
-        type:String,
-        trim:true,
-        require: true,
+        type: String,
+        trim: true,
         maxLength: 100,
+        required: true,
+        unique:true
     },
     timestamps:{
         type: Date,

@@ -1,19 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-const { getAllListings } = require("../controllers/headersControllers");
-router.get('/all', getAllListings)
+const { getHeaders, createHeaders, updateHeaders, deleteHeaders } = require("../controllers/headersControllers");
+router.get('/all', getHeaders)
 
-router.post('/create', (req, res) => {
-    res.json('create')
-})
+router.post('/create', createHeaders)
 
-router.put('/update/:id', (req, res) => {
-    res.json(req.params.id)
-})
+router.put('/update/:id', updateHeaders)
 
-router.delete('/delete/:id', (req, res) => {
-    res.json(req.params.id)
-})
+router.delete('/delete/:id', deleteHeaders)
 
 module.exports = router
