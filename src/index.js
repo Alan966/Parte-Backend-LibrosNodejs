@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const connect = require('./connection')
 const logger = require('morgan')
+const cors = require('cors')
 // const isAdmin  = require('./middlewares/isAdmin')
 
 app.set('port', 5050)
@@ -9,12 +10,13 @@ app.set('title', 'My aplicacion esta ')
 app.set('corriendo', 'corriendo')
 
 // Para poder utilzar  json
-app.use(express.json())
-connect()
+
 
 //Middlewares
 app.use(logger('dev'))
-
+app.use(express.json())
+app.use(cors())
+connect()
 // Se agrega el middleware en la aplicación.
 //   app.use(isAdmin);
 
