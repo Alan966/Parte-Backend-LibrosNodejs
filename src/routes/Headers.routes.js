@@ -5,5 +5,5 @@ const { list, create } = require('../controllers/HeadersControllers');
 
 //List
 router.get('/all', list);
-router.post('/cretae', create);
+router.post('/create', create);
 module.exports = router;

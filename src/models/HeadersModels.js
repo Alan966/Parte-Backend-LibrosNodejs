@@ -12,9 +12,12 @@ const headersSchema = new Schema({
     image:{
         data: Buffer,
         contentType: String
-    }
+        }
 },
-{timestamps: true}
+{timestamps: true},
+{
+    collection: 'Headers'
+}
 );
 
 module.exports = mongoose.model('Headers', headersSchema);

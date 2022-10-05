@@ -3,14 +3,6 @@
   "version": "1.0.0",
   "description": "Parte Backend app de libros",
   "main": "index.js",
-    "babel": {
-      "presets": "./babelrc.json"
-    },
-    "jest": {
-      "moduleNameMapper": {
-        "//.webpd$": "./test/images.js"
-      }
-    },
   "scripts": {
     "server": "nodemon src/index.js",
     "test": "jest --detectOpenHandles --env=node"
