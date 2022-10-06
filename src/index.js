@@ -27,6 +27,7 @@ app.get('/dashboard', (req, res) => {
 
 app.use('/shortDb', require('../src/routes/ShortDb.routes'))
 app.use('/headers', require('../src/routes/Headers.routes'))
+app.use('/images', require('../src/routes/Images.routes'))
 
 app.listen(app.get('port'), () => {
     console.log(`${app.get('title')} ${app.get('corriendo')} en el puerto ${app.get('port')}`)
