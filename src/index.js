@@ -5,7 +5,7 @@ const logger = require('morgan')
 const cors = require('cors')
 // const isAdmin  = require('./middlewares/isAdmin')
 
-app.set('port', 5050)
+app.set('port', 5000)
 app.set('title', 'My aplicacion esta ')
 app.set('corriendo', 'corriendo')
 

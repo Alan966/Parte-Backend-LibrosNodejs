@@ -7,9 +7,9 @@ const imagesSchema = new Schema({
         type:String,
         trim:true,
         require:true,
-        maxLength:32
+        maxlength:32
     },
-    category:{
+    headers:{
         type: ObjectId,
         ref: 'Headers',
         require:true
