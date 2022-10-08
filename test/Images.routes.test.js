@@ -53,6 +53,10 @@ describe('all images', () => {
             response = await request(app).post('/images/create').send(image).type('form');
         })
 
+        afterEach(async() => {
+            await Images.deleteMany({name: "Casas domo"});
+        })
+
         test('should response with a 200 status code', async () => {
             expect(response.statusCode).toBe(200);
         })
@@ -78,7 +82,7 @@ describe('all images', () => {
 
     describe('GET /images/:imageId', () => {
 
-        let id = '633f7f482691aa31bb75246d';
+        let id = '634072dcb738e49a6b6aecff';
         let response;
         beforeEach(async() => {
             response = await request(app).get(`/images/${id}`).send();
@@ -91,7 +95,7 @@ describe('all images', () => {
 
     describe('GET /images/image/:imageId', () => {
 
-        let id = '633f7f482691aa31bb75246d';
+        let id = '634072dcb738e49a6b6aecff';
         let response;
         beforeEach(async() => {
             response = await request(app).get(`/images/image/${id}`).send();
@@ -102,7 +106,7 @@ describe('all images', () => {
         })
 
         test('should response witha content type image', async () => {
-            expect(response.headers['content-type']).toContain('image/jpeg');
+            expect(response.headers['content-type']).toContain('image');
         });
 
         test('should response with a image', async () => {
